@@ -135,7 +135,7 @@ void MainWindow::on_pushButtonRenouveller_clicked()
     QAbstractItemModel * model = ui->tableViewRenouv->model();
     QString numeroPrescriptionClicked = model->data(model->index(row,0)).toString();
     QSqlQuery req;
-    req.exec("udate Prescription setPresDateFin = "+ ui->dateEditRenouveller->date().toString("yyyy/MM/dd") +"where presNum = "+ numeroPrescriptionClicked);
+    req.exec("update Prescription set PresDateFin = '"+ ui->dateEditRenouveller->date().toString("yyyy-MM-dd") +"' where presNum = "+ numeroPrescriptionClicked);
     req.next();
-    cout<<"update Prescription set PresDateFin = '"+ ui->dateEditRenouveller->date().toString("yyyy/MM/dd").toStdString() +"' where presNum = "+ numeroPrescriptionClicked.toStdString()<<endl;
+    startAp();
 }
